@@ -1,243 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lab Usage Logger</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: linear-gradient(to right, #1e3c72, #2a5298);
-      color: #fff;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.4);
-      font-size: 1.5em;
-    }
-    form {
-      background: rgba(255,255,255,0.1);
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 800px;
-    }
-    label { display:block; margin-top:10px; }
-    input, select, textarea {
-      width: 100%; padding: 6px;
-      margin-top: 4px; border-radius: 6px;
-      border: none; font-size: 1em;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none; border-radius: 8px;
-      background: #ff9800; color: #fff;
-      font-size: 1em; cursor: pointer;
-    }
-    button:hover { background: #e68900; }
-    table {
-      width: 95%; margin: 20px auto;
-      border-collapse: collapse;
-      background: #fff; color:#000;
-    }
-    th, td {
-      border: 1px solid #ccc; padding: 8px;
-      text-align: center;
-    }
-    th { background: #2a5298; color:#fff; }
-    .actions { text-align: center; margin: 20px; }
-  </style>
+<meta charset="UTF-8">
+<title>Lab Usage Logger</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(to right, #1e3c72, #2a5298); color: #fff; }
+header { text-align: center; padding: 20px; background: rgba(0,0,0,0.4); font-size: 1.5em; }
+form { background: rgba(255,255,255,0.1); margin: 20px auto; padding: 20px; border-radius: 12px; width: 90%; max-width: 800px; }
+label { display:block; margin-top:10px; }
+input, select, textarea { width: 100%; padding: 6px; margin-top: 4px; border-radius: 6px; border: none; font-size: 1em; }
+button { margin-top: 15px; padding: 10px 20px; border: none; border-radius: 8px; background: #ff9800; color: #fff; font-size: 1em; cursor: pointer; }
+button:hover { background: #e68900; }
+table { width: 95%; margin: 20px auto; border-collapse: collapse; background: #fff; color:#000; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+th { background: #2a5298; color:#fff; }
+.actions { text-align: center; margin: 20px; }
+</style>
 </head>
 <body>
-  <header>Lab Usage Logger</header>
+<header>Lab Usage Logger</header>
 
-  <form id="labForm">
-    <label>Date: <input type="date" id="date"></label>
-    <label>Semester: <input type="text" id="semester"></label>
-    <label>Course / Subjects: <input type="text" id="course"></label>
-    <label>Credit Hours: <input type="number" id="creditHours" min="1" max="10"></label>
+<form id="labForm">
+  <label>Date: <input type="date" id="date"></label>
+  <label>Semester: 
+    <select id="semester">
+      <option value="">-- Select Semester --</option>
+      <option value="1">Semester 1</option>
+      <option value="2">Semester 2</option>
+      <option value="3">Semester 3</option>
+      <option value="4">Semester 4</option>
+      <option value="5">Semester 5</option>
+    </select>
+  </label>
+  <label>Course / Subjects: <input type="text" id="course"></label>
+  <label>Credit Hours: <input type="number" id="creditHours" min="1" max="10"></label>
+  <label>Devices Needed:
+    <select id="devices" multiple>
+      <option value="Cisco Equipment">Cisco Equipment</option>
+      <option value="PCs">PCs</option>
+      <option value="PC Assembly">PC Assembly</option>
+      <option value="Wireless Router + Alfa">Wireless Router + Alfa</option>
+      <option value="BYOD">BYOD</option>
+    </select>
+  </label>
+  <label>Lab:
+    <select id="lab">
+      <option value="">-- Select Lab --</option>
+      <option value="L04-002">L04-002</option>
+      <option value="L04-003 PCs ASSEMBLY">L04-003 PCs ASSEMBLY</option>
+      <option value="L04-004 PCs ASSEMBLY">L04-004 PCs ASSEMBLY</option>
+      <option value="L10-001 CYSOP">L10-001 CYSOP</option>
+      <option value="L10-003 SWE IOT">L10-003 SWE IOT</option>
+      <option value="L10-004 CISCO">L10-004 CISCO</option>
+      <option value="L10-005 CISCO">L10-005 CISCO</option>
+      <option value="L10-007 CISCO">L10-007 CISCO</option>
+      <option value="L10-009 MARCRAFT & CISCO">L10-009 MARCRAFT & CISCO</option>
+      <option value="L10-011 FORENSCIS">L10-011 FORENSCIS</option>
+      <option value="L11-004">L11-004</option>
+      <option value="L12-001A">L12-001A</option>
+      <option value="L12-001B">L12-001B</option>
+      <option value="L12-001C PCs ASSEMBLY">L12-001C PCs ASSEMBLY</option>
+      <option value="L12-008">L12-008</option>
+      <option value="L12-002 PCs ASSEMBLY">L12-002 PCs ASSEMBLY</option>
+      <option value="L12-007">L12-007</option>
+      <option value="L12-009">L12-009</option>
+      <option value="L15-001 DUMMY">L15-001 DUMMY</option>
+      <option value="L15-002 CRM">L15-002 CRM</option>
+      <option value="L15-003 DUMMY">L15-003 DUMMY</option>
+      <option value="L15-004 SWE">L15-004 SWE</option>
+      <option value="L15-009 CRYPTO & PCs ASSEMBLY">L15-009 CRYPTO & PCs ASSEMBLY</option>
+      <option value="L15-010 DUMMY">L15-010 DUMMY</option>
+      <option value="L15-012 CISCO & PCs ASSEMBLY">L15-012 CISCO & PCs ASSEMBLY</option>
+      <option value="L15-013 CSOC">L15-013 CSOC</option>
+    </select>
+  </label>
+  <label>TTOs in Charge: <input type="text" id="ttos"></label>
+  <label>Class (January 2026): <input type="text" id="class" value="January 2026"></label>
+  <label>Remark: <textarea id="remark"></textarea></label>
 
-    <label>Devices Needed:
-      <select id="devices" multiple>
-        <option value="Cisco Equipment">Cisco Equipment</option>
-        <option value="PCs">PCs</option>
-        <option value="PC Assembly">PC Assembly</option>
-        <option value="Wireless Router + Alfa">Wireless Router + Alfa</option>
-        <option value="BYOD">BYOD</option>
-      </select>
-    </label>
+  <button type="button" onclick="addRecord()">Add Record</button>
+</form>
 
-    <label>Lab:
-      <select id="lab">
-        <option value="">-- Select Lab --</option>
-        <option value="L15-012">L15-012</option>
-        <option value="L15-009">L15-009</option>
-        <option value="L12-001C">L12-001C</option>
-        <option value="L12-002">L12-002</option>
-        <option value="L04-003">L04-003</option>
-        <option value="L04-004">L04-004</option>
-        <option value="L10-007">L10-007</option>
-        <option value="L10-005">L10-005</option>
-        <option value="L10-004">L10-004</option>
-      </select>
-    </label>
+<div class="actions">
+  <button onclick="exportCSV()">Export CSV</button>
+  <button onclick="importCSV()">Import CSV</button>
+  <button onclick="clearData()">Clear All</button>
+</div>
 
-    <label>Usage Ratio (%): <input type="number" id="usageRatio" min="0" max="100"></label>
+<h2 style="text-align:center;">Full Records</h2>
+<table id="recordsTable">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Semester</th>
+      <th>Course / Subjects</th>
+      <th>Credit Hours</th>
+      <th>Devices Needed</th>
+      <th>Lab</th>
+      <th>TTOs in Charge</th>
+      <th>Class Jan 2026</th>
+      <th>Remark</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-    <label>TTOs in Charge: <input type="text" id="ttos"></label>
-    <label>Class (January 2026): <input type="text" id="class" value="January 2026"></label>
-    <label>Remark: <textarea id="remark"></textarea></label>
+<h2 style="text-align:center;">Summary</h2>
+<table id="summaryTable">
+  <thead>
+    <tr>
+      <th>Lab</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-    <button type="button" onclick="addRecord()">Add Record</button>
-  </form>
+<script>
+const form = document.getElementById('labForm');
+const tableBody = document.querySelector('#recordsTable tbody');
+const summaryBody = document.querySelector('#summaryTable tbody');
+let records = JSON.parse(localStorage.getItem('labRecords') || '[]');
 
-  <div class="actions">
-    <button onclick="exportCSV()">Export CSV</button>
-    <button onclick="importCSV()">Import CSV</button>
-    <button onclick="clearData()">Clear All</button>
-  </div>
+document.getElementById('date').valueAsDate = new Date();
 
-  <!-- Table Rekod -->
-  <h2 style="text-align:center;">Full Records</h2>
-  <table id="recordsTable">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Semester</th>
-        <th>Course / Subjects</th>
-        <th>Credit Hours</th>
-        <th>Devices Needed</th>
-        <th>Lab</th>
-        <th>Usage Ratio (%)</th>
-        <th>TTOs in Charge</th>
-        <th>Class Jan 2026</th>
-        <th>Remark</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+function countLabUsage(labName) {
+  return records.filter(r => r.lab === labName).length;
+}
 
-  <!-- Table Summary -->
-  <h2 style="text-align:center;">Summary</h2>
-  <table id="summaryTable">
-    <thead>
-      <tr>
-        <th>Lab</th>
-        <th>Usage</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+function updateSummary() {
+  summaryBody.innerHTML = '';
+  const labs = [
+    "L04-002","L04-003 PCs ASSEMBLY","L04-004 PCs ASSEMBLY",
+    "L10-001 CYSOP","L10-003 SWE IOT","L10-004 CISCO","L10-005 CISCO","L10-007 CISCO","L10-009 MARCRAFT & CISCO","L10-011 FORENSCIS",
+    "L11-004",
+    "L12-001A","L12-001B","L12-001C PCs ASSEMBLY","L12-008","L12-002 PCs ASSEMBLY","L12-007","L12-009",
+    "L15-001 DUMMY","L15-002 CRM","L15-003 DUMMY","L15-004 SWE","L15-009 CRYPTO & PCs ASSEMBLY","L15-010 DUMMY","L15-012 CISCO & PCs ASSEMBLY","L15-013 CSOC"
+  ];
+  labs.forEach(lab => {
+    const tr = summaryBody.insertRow();
+    tr.insertCell().textContent = lab;
+    tr.insertCell().textContent = `${countLabUsage(lab)} / 13`;
+  });
+}
 
-  <script>
-    const form = document.getElementById('labForm');
-    const tableBody = document.querySelector('#recordsTable tbody');
-    const summaryBody = document.querySelector('#summaryTable tbody');
-    let records = JSON.parse(localStorage.getItem('labRecords') || '[]');
+function renderTable() {
+  tableBody.innerHTML = '';
+  records.forEach(r => {
+    const row = tableBody.insertRow();
+    row.insertCell().textContent = r.date;
+    row.insertCell().textContent = r.semester;
+    row.insertCell().textContent = r.course;
+    row.insertCell().textContent = r.creditHours;
+    row.insertCell().textContent = r.devices;
+    row.insertCell().textContent = r.lab;
+    row.insertCell().textContent = r.ttos;
+    row.insertCell().textContent = r.classJan;
+    row.insertCell().textContent = r.remark;
+  });
+  localStorage.setItem('labRecords', JSON.stringify(records));
+  updateSummary();
+}
 
-    document.getElementById('date').valueAsDate = new Date();
+function addRecord() {
+  const date = document.getElementById('date').value;
+  const semester = document.getElementById('semester').value;
+  const course = document.getElementById('course').value;
+  const creditHours = document.getElementById('creditHours').value;
+  const devices = Array.from(document.getElementById('devices').selectedOptions).map(o => o.value).join(', ');
+  const lab = document.getElementById('lab').value;
+  const ttos = document.getElementById('ttos').value;
+  const classJan = document.getElementById('class').value;
+  const remark = document.getElementById('remark').value;
 
-    function countLabUsage(labName) {
-      return records.filter(r => r.lab === labName).length;
-    }
+  if (!lab || !semester) {
+    alert("Please select a lab and semester.");
+    return;
+  }
+  if (countLabUsage(lab) >= 13) {
+    alert(`Lab ${lab} already has 13 classes in total. You cannot add more.`);
+    return;
+  }
 
-    function updateSummary() {
-      summaryBody.innerHTML = '';
-      const labs = ["L15-012","L15-009","L12-001C","L12-002","L04-003","L04-004","L10-007","L10-005","L10-004"];
-      labs.forEach(lab => {
-        const tr = summaryBody.insertRow();
-        tr.insertCell().textContent = `Lab ${lab}`;
-        tr.insertCell().textContent = `${countLabUsage(lab)} / 13`;
+  records.push({date, semester, course, creditHours, devices, lab, ttos, classJan, remark});
+  renderTable();
+  form.reset();
+  document.getElementById('date').valueAsDate = new Date();
+}
+
+function exportCSV() {
+  const headers = ["Date","Semester","Course / Subjects","Credit Hours","Devices Needed","Lab","TTOs in Charge","Class Jan 2026","Remark"];
+  let csv = headers.join(',') + '\n';
+  records.forEach(r => {
+    csv += Object.values(r).map(v => `"${v}"`).join(',') + '\n';
+  });
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'lab_records.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importCSV() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.csv';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = event => {
+      const lines = event.target.result.split('\n').slice(1);
+      records = lines.filter(l => l.trim()).map(line => {
+        const vals = line.split(',').map(v => v.replace(/(^"|"$)/g,''));
+        const [date, semester, course, creditHours, devices, lab, ttos, classJan, remark] = vals;
+        return {date, semester, course, creditHours, devices, lab, ttos, classJan, remark};
       });
-    }
-
-    function renderTable() {
-      tableBody.innerHTML = '';
-      records.forEach(r => {
-        const row = tableBody.insertRow();
-        Object.values(r).forEach(val => {
-          const cell = row.insertCell();
-          cell.textContent = val;
-        });
-      });
-      localStorage.setItem('labRecords', JSON.stringify(records));
-      updateSummary();
-    }
-
-    function addRecord() {
-      const date = document.getElementById('date').value;
-      const semester = document.getElementById('semester').value;
-      const course = document.getElementById('course').value;
-      const creditHours = document.getElementById('creditHours').value;
-      const devices = Array.from(document.getElementById('devices').selectedOptions).map(o => o.value).join(', ');
-      const lab = document.getElementById('lab').value;
-      const usageRatioVal = document.getElementById('usageRatio').value;
-      const usageRatio = usageRatioVal ? usageRatioVal + '%' : '';
-      const ttos = document.getElementById('ttos').value;
-      const classJan = document.getElementById('class').value;
-      const remark = document.getElementById('remark').value;
-
-      // Rule: Max 13 classes per Lab
-      if (lab && countLabUsage(lab) >= 13) {
-        alert(`Lab ${lab} already has 13 classes. You cannot add more.`);
-        return;
-      }
-
-      records.push({date, semester, course, creditHours, devices, lab, usageRatio, ttos, classJan, remark});
       renderTable();
-      form.reset();
-      document.getElementById('date').valueAsDate = new Date();
-      document.getElementById('class').value = "January 2026";
-    }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
 
-    function exportCSV() {
-      let csv = '';
-      const headers = ["Date","Semester","Course / Subjects","Credit Hours","Devices Needed","Lab","Usage Ratio","TTOs in Charge","Class Jan 2026","Remark"];
-      csv += headers.join(',') + '\n';
-      records.forEach(r => {
-        csv += Object.values(r).map(val => `"${val}"`).join(',') + '\n';
-      });
-      const blob = new Blob([csv], {type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'lab_records.csv';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function importCSV() {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = '.csv';
-      input.onchange = e => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = event => {
-          const lines = event.target.result.split('\n').slice(1);
-          records = lines.filter(l => l.trim()).map(line => {
-            const vals = line.split(',').map(v => v.replace(/(^"|"$)/g,''));
-            const [date,semester,course,creditHours,devices,lab,usageRatio,ttos,classJan,remark] = vals;
-            return {date,semester,course,creditHours,devices,lab,usageRatio,ttos,classJan,remark};
-          });
-          renderTable();
-        };
-        reader.readAsText(file);
-      };
-      input.click();
-    }
-
-    function clearData() {
-      if (confirm("Are you sure to clear all records?")) {
-        records = [];
-        renderTable();
-      }
-    }
-
+function clearData() {
+  if (confirm("Are you sure to clear all records?")) {
+    records = [];
     renderTable();
-  </script>
+  }
+}
+
+renderTable();
+</script>
 </body>
 </html>
